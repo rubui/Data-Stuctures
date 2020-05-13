@@ -6,6 +6,8 @@ Insertion		 N/A 			O(n)
 Appending		 N/A 			O(1)
 Deletion		 N/A 			O(n)
 
+An implementaion of a Dynamic Array
+
 */
 
 #include<iostream>
@@ -15,12 +17,13 @@ using namespace std;
 template <class T> class DynamicArray{
 	private:
 		T * arr = NULL;
-		// Length of Array believed by User
+		// Length of Array as perceived by User
 		int length = 0;
 		// Actual length of Array
 		int capacity = 0;
 
 	public:
+		//Constructor where capacity if 16 by default
 		DynamicArray(){
 			arr = new T [16];
 		}
@@ -100,7 +103,10 @@ template <class T> class DynamicArray{
 
 		}
 
-		// remove value at index
+		/*
+			input: index
+			output: typename T the value removed
+		*/
 		T removeAt(int index){
 			try{
 				if(index < 0 || index >= length) throw out_of_range("Index is out of range");
@@ -123,7 +129,10 @@ template <class T> class DynamicArray{
 			}
 		}
 
-		//remove the first instance of val in array
+		/*
+			input: T val
+			output: bool indicating whether or not removal of val was successful
+		*/
 		bool remove(T val){
 			for(int i = 0; i < length; i++){
 				if(arr[i] == val){
@@ -134,7 +143,10 @@ template <class T> class DynamicArray{
 			return false;
 		}
 	
-		//Find the first index of val
+		/*
+			input:  T val
+			output: returns an int indicating the index of val or -1 indicating value not found
+		*/
 		bool indexOf(T val){
 			for(int i = 0; i < length; i++){
 				if(arr[i] == val){
